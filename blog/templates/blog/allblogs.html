@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% load staticfiles %}
+  	{% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
-    <title>Jan Kick</title>
+    <title>Jan Kick's Blog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
 
@@ -59,35 +59,29 @@
 </header>
 
 <main role="main">
+	<div class = "container">
+	<h1 class = "text-center pt-5">Welcome to Jan's Blog</h1>
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi I'm Jan</h1>
-      <p class="lead text-muted">My Name is Jan Kick and I'm learning web develpement</p>
-      <p>
-        <a href="mailto:blacklight070@gmail.com" class="btn btn-primary my-2">Email</a>
-      </p>
-      <img src="{% static 'illumi.jpg' %}">
-    </div>
-  </section>
+	<br/>
+	<br>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" src = "{{ job.image.url }}">
-            <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+	<h2> Latest Posts</h2>
+	{% for blog in blogs.all %}
+	<div>
+		<a href="{% url 'detail' blog.id %}">{{blog.title}}</a>
+		<br>
+		{{blog.pub_date_pretty}}
+		<br>
+		<img class="bd-placeholder-img img-fluid card-img-top" src = "{{ blog.image.url }}", height="50", width="50">
+		<p> {{blog.summary}}</p>
+	</div>
+	<hr>
+	<br>
+	<br>
+	<br>
+	{% endfor %}
+	<hr>
+</dir>
 
 </main>
 
